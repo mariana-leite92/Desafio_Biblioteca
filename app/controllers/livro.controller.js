@@ -64,24 +64,21 @@ exports.findAllPublished = (req, res) => {
     });
 };
 
-exports.findOne = (req,res) =>{
-    const id = req.params.id;
-    
-
-    Livro.findByPk(id)
+exports.findAllAutor = (req, res) => {
+    const autor = req.params.autor;
+    Livro.findAll({where: {autor: autor}})
     .then((data) => {
-        if(!data){
-            res.status(404).send({message: "Id não encontrado"})
-        }
         res.send(data);
     })
-    .catch((err) => {
+    .catch(err => {
         res.status(500).send({
             message:
-            err.message || `Erro interno ao buscar id: ${id}`
+            err.message || "Erro interno ao buscar os status do livro"
         });
     });
-}
+};
+
+
 exports.update = (req, res) =>{
     const id = req.params.id;
 

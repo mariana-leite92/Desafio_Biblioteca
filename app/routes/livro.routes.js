@@ -10,7 +10,8 @@ router.get("/", livros.findAll);
 
 router.get("/status", livros.findAllPublished);
 
-router.get("/:id", livros.findOne);
+router.get("/:autor", livros.findAllAutor);
+
 
 
 router.put("/:id", livros.update);
